@@ -67,5 +67,5 @@ async def dolar(ctx):
     embed.add_field(name='USD/CLP', value=f'Compra: ${compra_cl} | Venta: ${venta_cl}  <:flag_cl:1286004393438744596>')
     embed.set_thumbnail(url='attachment://dolar.png')
     embed.timestamp = datetime.now()
-    await ctx.send(file=file,embed=embed)
+    await ctx.send(file=file, embed=embed)
 bot.run(token)
