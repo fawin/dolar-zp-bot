@@ -58,7 +58,7 @@ async def dolar(ctx):
         await ctx.send('Ocurrio un error..')
         print(e)
 
-    embed = discord.Embed(title='Tipos de cambio ZP', description='', color=discord.Color.blue())
+    embed = discord.Embed(title='Dólares ZDN', description='', color=discord.Color.blue())
     embed.add_field(name='OFICIAL', value=f'${dolarOficial_precio} {Variacion_emoji(variacion_oficial)}', inline=False)
     embed.add_field(name='TARJETA', value=f'${dolarTarjeta_precio} {Variacion_emoji(variacion_tarjeta)}', inline=False)
     embed.add_field(name='CCL', value=f'${ccl_precio} {Variacion_emoji(variacion_ccl)}', inline=False)
