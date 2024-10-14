@@ -43,8 +43,8 @@ async def dolar(ctx):
         variacion_ccl = dolarCcl['variation']
 
         compra_cl, venta_cl = data_cl['compra'], data_cl['venta']
-        
-        file = discord.File("G:\zp-dolar-bot\dolar-zp-bot\dolar.png", filename='dolar.png')
+
+        file = discord.File("./dolar.png", filename='dolar.png')
 
 
         def Variacion_emoji(variacion_tipo_cambio):
