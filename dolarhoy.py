@@ -23,7 +23,7 @@ async def dolar(ctx):
         data_cl = response_cl.json()
 
         dolar_blue = data['blue']
-        dolarBlue_compra, dolarBlue_venta = dolar_blue['ask'], dolar_blue['bid']
+        dolarBlue_venta, dolarBlue_compra = dolar_blue['ask'], dolar_blue['bid']
         variacion_blue = dolar_blue['variation']
 
         dolar_tarjeta = data['tarjeta']
@@ -31,7 +31,7 @@ async def dolar(ctx):
         variacion_tarjeta = dolar_tarjeta['variation']
 
         dolar_cripto = data['cripto']['ccb']
-        dolarCripto_compra, dolarCripto_venta = dolar_cripto['ask'], dolar_cripto['bid']
+        dolarCripto_venta, dolarCripto_compra = dolar_cripto['ask'], dolar_cripto['bid']
         variacion_cripto = dolar_cripto['variation']
 
         dolar_oficial = data['oficial']
