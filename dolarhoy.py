@@ -23,7 +23,7 @@ async def dolar(ctx):
         data_cl = response_cl.json()
 
         dolar_blue = data['blue']
-        dolarBlue_compra, dolarBlue_venta = dolar_blue['ask'], dolar_blue['bid']
+        dolarBlue_venta, dolarBlue_compra = dolar_blue['ask'], dolar_blue['bid']
         variacion_blue = dolar_blue['variation']
 
         dolar_tarjeta = data['tarjeta']
@@ -31,7 +31,7 @@ async def dolar(ctx):
         variacion_tarjeta = dolar_tarjeta['variation']
 
         dolar_cripto = data['cripto']['ccb']
-        dolarCripto_compra, dolarCripto_venta = dolar_cripto['ask'], dolar_cripto['bid']
+        dolarCripto_venta, dolarCripto_compra = dolar_cripto['ask'], dolar_cripto['bid']
         variacion_cripto = dolar_cripto['variation']
 
         dolar_oficial = data['oficial']
@@ -45,7 +45,6 @@ async def dolar(ctx):
         compra_cl, venta_cl = data_cl['compra'], data_cl['venta']
 
         file = discord.File("./dolar.png", filename='dolar.png')
-
 
         def Variacion_emoji(variacion_tipo_cambio):
             if variacion_tipo_cambio < 0:
@@ -68,4 +67,20 @@ async def dolar(ctx):
     embed.set_thumbnail(url='attachment://dolar.png')
     embed.timestamp = datetime.now()
     await ctx.send(file=file, embed=embed)
+
+@bot.command()
+async def crypto(ctx, coin: str):
+    try:
+        response = requests.get(f'https://api.coinbase.com/v2/exchange-rates?)&currency={coin}&currencies=usd')
+        data = response.json()
+        price = data['data']['rates']['USD']
+        file = discord.File("./btc.png", filename='btc.png')
+        
+        embed = discord.Embed(title='Criptos ZDN', description='', color=discord.Color.blue())
+        embed.add_field(name=f'{coin.upper()}', value=f'$ {price} USD', inline=True)
+        embed.set_image(url='attachment://btc.png')
+        await ctx.send(embed=embed, file=file)
+    except Exception as e:
+        await ctx.send(f'Coin no encontrada!')
+
 bot.run(token)
